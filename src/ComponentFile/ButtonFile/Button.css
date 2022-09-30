@@ -1,19 +1,58 @@
-.button-style {
-    margin-top: 50px;
-    width: 50px;
+/* .button-style {
+    width: 150px;
     height: 50px;
     padding: 0 20px;
     border-radius: 25px;
-    background: linear-gradient(145deg, #dbd6d5, #f1edec);
-    box-shadow: 10px 10px 16px #e4e0df,
-      -10px -10px 16px #fffcfb;
+    background-color: transparent;
+    box-shadow: 1px 1px 8px #e4e0df;
       transition: all 0.5s;
       font-size: 16px;
+      font-weight: 600;
+      border: 1px solid aqua;
+      color: white;
   }
   .button-style:hover{
-    width: 150px;
-    background: linear-gradient(145deg, #dbd6d5, #f1edec);
-    box-shadow: 10px 10px 16px #e4e0df,
-      -10px -10px 16px #fffcfb;
-      font-weight: 600;
-  }
+    box-shadow: 1px 1px 10px rgb(136, 255, 255);
+    color: aqua;
+  } */
+
+button {
+  position: absolute;
+  width: 180px;
+  height: 50px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  transition: all 0.5s;
+  font-weight: 400;
+}
+
+button svg, button svg rect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+}
+
+button svg rect {
+  stroke: #00ff62;
+  stroke-width: 4;
+  transition: 2s;
+  stroke-dasharray: 50 180;
+  stroke-dashoffset: 260;
+
+}
+
+button:hover {
+  color: aqua;
+}
+
+button:hover svg rect {
+  stroke: aqua;
+  stroke-dasharray: 180 50;
+  stroke-dashoffset: 0;
+}

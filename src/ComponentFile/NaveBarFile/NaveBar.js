@@ -4,9 +4,11 @@ import './NavBar.css';
 
 const NaveBar = () => {
     const navLink = <>
-        <li > <Link className='navLink-style' to={"/"}>Home</Link> </li>
-        <li > <Link className='navLink-style' to={"about"}>About</Link> </li>
-        <li > <Link className='navLink-style' to={"bloge"}>Bloge</Link> </li>
+        <li> <Link className='navLink-style' to={"/"}>Home</Link> </li>
+        <li> <Link className='navLink-style' to={"about"}>About</Link> </li>
+        <li> <Link className='navLink-style' to={"appointment"} >Appointment</Link> </li>
+        <li> <Link className='navLink-style' to={"bloge"}>Bloge</Link> </li>
+        <li> <Link className='navLink-style' to={"login"}>Login</Link> </li>
     </>;
     return (
         <div>

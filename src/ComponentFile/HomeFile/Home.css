@@ -28,3 +28,94 @@
     top: 0;
     left: 0;
 } */
+
+/* * {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee;
+} */
+
+.loader {
+    width: 120px;
+    height: 75px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.loader span {
+    font-size: 22px;
+    text-transform: uppercase;
+    margin: auto;
+}
+
+.ball {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #fff;
+    animation: bounce .5s alternate infinite;
+}
+
+.ball:nth-child(2) {
+    animation-delay: .16s;
+}
+
+.ball:nth-child(3) {
+    animation-delay: .32s;
+}
+
+@keyframes bounce {
+    from {
+        transform: scaleX(1.25);
+    }
+
+    to {
+        transform: translateY(-50px) scaleX(1);
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+.img-wrapper {
+    max-width: 100px;
+    position: relative;
+    margin: 10px 0 100px 100px;
+}
+
+.img-wrapper img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    border-radius: 50%;
+}
+
+.img-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: -15px;
+    border: 6px solid #000000;
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+    border-radius: 50%;
+    z-index: -1;
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
