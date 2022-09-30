@@ -1,0 +1,30 @@
+/* .shudo-style {
+    width: 120px;
+    height: 50px;
+    background-color: red;
+    margin: 10px auto;
+    position: relative;
+    transition: all 0.5s;
+    z-index: 2;
+}
+
+.shudo-style::before {
+    position: absolute;
+    content: "";
+    width: 0%;
+    height: 0%;
+    background-color: aqua;
+    top: 0;
+    left: 0;
+    transition: all 0.5s;
+}
+
+.shudo-style:hover::before {
+    position: absolute;
+    content: "show more";
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+    top: 0;
+    left: 0;
+} */

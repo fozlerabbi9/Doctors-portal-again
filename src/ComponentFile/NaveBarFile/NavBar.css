@@ -1,0 +1,37 @@
+.navLink-style {
+    color: white;
+    transition: all 0.5s;
+    padding: 8px 20px;
+    list-style: none;
+    margin-left: 5px;
+}
+
+.navLink-style:hover {
+    background-color: aqua;
+    color: red;
+}
+
+.title-style {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    border: 1px solid aqua;
+    padding: 8px 20px;
+    transition: all 0.5s;
+    position: relative;
+    border-radius: 10px;
+}
+
+.title-style:hover {
+     border: none;
+     color: black;
+     border: 1px solid transparent;
+     border-radius: 3px;
+     background-color: aqua;
+}
+@media (max-width: 767px) {
+    .title-style{
+        border: none;
+    }
+}

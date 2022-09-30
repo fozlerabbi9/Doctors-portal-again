@@ -1,0 +1,19 @@
+.button-style {
+    margin-top: 50px;
+    width: 50px;
+    height: 50px;
+    padding: 0 20px;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #dbd6d5, #f1edec);
+    box-shadow: 10px 10px 16px #e4e0df,
+      -10px -10px 16px #fffcfb;
+      transition: all 0.5s;
+      font-size: 16px;
+  }
+  .button-style:hover{
+    width: 150px;
+    background: linear-gradient(145deg, #dbd6d5, #f1edec);
+    box-shadow: 10px 10px 16px #e4e0df,
+      -10px -10px 16px #fffcfb;
+      font-weight: 600;
+  }
