@@ -1,12 +1,16 @@
 import React from 'react';
 import Button from '../ButtonFile/Button';
 import './Home.css';
+import Info from './Info';
+import Service from './Service';
 
 const Home = () => {
     return (
+
         <div>
-            <header>
-                <div className="hero min-h-screen bg-primary">
+            <header className='header-style'>
+                <div className="hero min-h-screen">
+                    {/* <div className="hero min-h-screen bg-primary"> */}
                     <div className="hero-content sm:flex-col-reverse flex-col  md:flex-col lg:flex-row-reverse ">
 
                         {/* <img className=' md:w-2/3 lg:w-1/2' src="https://i.ibb.co/bQvShG5/chair.png" alt="" /> */}
@@ -36,22 +40,12 @@ const Home = () => {
                 </div>
             </header>
 
-            <body>
-                <div class="loader">
-                    <div class="ball"></div>
-                    <div class="ball"></div>
-                    <div class="ball"></div>
-                    <span>Loading...</span>
+            <Info></Info>
+            <Service></Service>
 
-                </div>
-                <br />
-
-                <div class="img-wrapper mt-10">
-                    <img src="https://i.ibb.co/V3VyBxS/288151198-1075687899994641-1633964068978918891-n.jpg" />
-                </div>
-            </body>
         </div>
     );
+
 };
 
 export default Home;

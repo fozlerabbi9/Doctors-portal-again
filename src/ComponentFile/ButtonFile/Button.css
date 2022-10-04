@@ -39,7 +39,8 @@ button svg, button svg rect {
 }
 
 button svg rect {
-  stroke: #00ff62;
+  stroke: aqua;
+  /* stroke: #00ff62; */
   stroke-width: 4;
   transition: 2s;
   stroke-dasharray: 50 180;
@@ -52,7 +53,8 @@ button:hover {
 }
 
 button:hover svg rect {
-  stroke: aqua;
+  /* stroke: aqua; */
+  stroke: #00ff62;
   stroke-dasharray: 180 50;
   stroke-dashoffset: 0;
 }

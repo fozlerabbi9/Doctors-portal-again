@@ -23,7 +23,8 @@ const NaveBar = () => {
                         </ul>
                     </div>
                     <div className='navbar-center'>
-                        <li className='list-none'> <Link className='title-style' to={"/"}>Doctors Portal</Link> </li>
+                        <li className='list-none'> <Link className='' to={"/"}> <h2 className='title-style' data-text="DoctorsPortal">DoctorsPortal</h2></Link> </li>
+                        {/* <li className='list-none'> <Link className='title-style' to={"/"}>Doctors Portal</Link> </li> */}
                     </div>
                 </div>
                 <div className="navbar-end hidden lg:flex">
