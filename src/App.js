@@ -7,6 +7,11 @@ import Home from './ComponentFile/HomeFile/Home';
 import Login from './ComponentFile/LoginFile/Login';
 import NaveBar from './ComponentFile/NaveBarFile/NaveBar';
 import NotFound from './ComponentFile/NotFoundFile/NotFound';
+// import 'mdb-react-ui-kit/dist/css/mdb.min.css'
+
+// eslint-disable-next-line
+import "swiper/css/bundle";
+// import "./styles.css";
 
 function App() {
   return (

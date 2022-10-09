@@ -1,0 +1,9 @@
+.card-style{
+    /* font-size: 2rem; */
+    transition: all 0.3s linear;
+    
+}
+.card-style:hover{
+    /* font-size: 2rem; */
+    transform: translateY(-1rem);
+}

@@ -1,0 +1,53 @@
+.testimonial-style {
+  transition: all 0.3s linear;
+}
+
+.testimonial-style:hover {
+  transform: translateY(-1rem);
+}
+
+.logo-style {
+  margin-bottom: 2px;
+  transition: all 0.3s linear;
+  box-shadow: 1px 1px 5px gray;
+  border-radius: 79% 21% 74% 26% / 24% 78% 22% 76% ;
+  animation: water-wave 3s linear infinite;
+}
+@keyframes water-wave {
+    0%{
+      border-radius: 79% 21% 74% 26% / 24% 78% 22% 76% ;
+    }
+    50%{
+      border-radius: 41% 59% 34% 66% / 69% 47% 53% 31% ;
+    }
+    100%{
+      border-radius: 79% 21% 74% 26% / 24% 78% 22% 76% ;
+    }
+}
+
+
+.testimonial-style:hover .logo-style {
+  box-shadow: 2px 2px 5px gray;
+}
+
+/* .testimonial p {
+    color: #fff;
+    line-height: 19px;
+    font-size: 13px;
+    margin-top: 16px;
+  }
+  
+  .testimonial h5 {
+    color: #9c27b0;
+    text-transform: uppercase;
+    font-size: 15px;
+    margin-top: 8px;
+  }
+  
+  body {
+    background: #9c27b0;
+  }
+  
+  .col-md-4 {
+    margin-top: 25px;
+  } */

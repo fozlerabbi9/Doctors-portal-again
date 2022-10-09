@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../ButtonFile/Button';
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 const SingleService = ({ service, setServiceInfo }) => {
     const { serviceName, description, img } = service;
@@ -14,14 +15,14 @@ const SingleService = ({ service, setServiceInfo }) => {
             </div>
             <div class="face back-face">
                 <div class="black-bar mt-4"></div>
-                <div class="authorize text-uppercase ps-3 pt-3">Authorized signature-not valid unless signed</div>
+                <div class="authorize text-uppercase ps-3 pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, repellendus.</div>
                 <div className="absolute bottom-0 left-0">
 
                     <label
                         htmlFor="info-Modal"
-                        className="btn modal-button"
+                        className="btn modal-button text-accent"
                         onClick={() => setServiceInfo(service)}
-                    >See More</label>
+                    >See More <AiOutlineArrowRight className='ml-2 text-xl text-accent'></AiOutlineArrowRight> </label>
 
                 </div>
             </div>

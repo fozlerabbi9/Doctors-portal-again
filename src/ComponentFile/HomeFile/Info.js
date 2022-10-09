@@ -9,7 +9,7 @@ import clock from "../../assets/icons/clock.svg";
 const Info = () => {
     return (
         // <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16 px-10 bg-primary'>
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 bg-neutral pt-24 md:pt-32 md:pb-10 lg:py-36 lg:px-10'>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 bg-neutral pt-24 md:pt-32 md:pb-10 lg:py-44 lg:px-10'>
             {/* <img src={clock} alt="" /> */}
             <Cardinfo
                 cardTitle="Opening Hours"
