@@ -1,0 +1,35 @@
+
+.image-container {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container img {
+    border-radius: 10px;
+}
+
+.image-container .content {
+    position: absolute;
+    bottom: -140px;
+    margin: 0 15px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 10px rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: all 1s;
+    overflow: hidden;
+}
+
+.content p {
+    background: transparent;
+    color: black;
+}
+
+.image-container:hover .content {
+    bottom: 14px;
+}
