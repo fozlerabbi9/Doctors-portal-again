@@ -5,7 +5,6 @@ const Footer = () => {
     const currentDate = date.getDate();
     const currentYear = date.getFullYear();
     const currentMonth = date.getMonth();
-    console.log(currentDate);
 
     return (
         <div className='bg-primary'>
