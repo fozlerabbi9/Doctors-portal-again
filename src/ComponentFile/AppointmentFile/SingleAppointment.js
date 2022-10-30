@@ -1,0 +1,34 @@
+import React from 'react';
+
+const SingleAppointment = ({ service, currentDate }) => {
+    const { name, slots } = service;
+    
+    console.log(currentDate)
+    return (
+        <div>
+            {/* <select name="" id="">
+                <option value={slots}>{slots}</option>
+            </select> */}
+            <div style={{ backgroundColor: "rgba(0,0,0,0.8)" }} className="card text-neutral-content">
+                <div className="card-body items-center text-center">
+                    {/* <div className={`${currentDate ? "card-body items-center text-center" : "card-body items-center text-center cursor-no-drop"}`}> */}
+                    <h2 className="card-title text-accent">{name}</h2>
+                    {/* <p>{slots.length} spaces available</p> */}
+                    <p>
+                        {
+                            slots.length ? <span>{slots[0]}</span>
+                                :
+                                <span className='text-red-500'>No time available</span>
+                        }
+                    </p>
+                    <p className='text-sm'> {slots.length} {`${slots.length > 1 ? "spaces" : "space"}`} available</p>
+                    <div className="card-actions justify-center mb-6">
+                        <button  disabled={slots.length === 0} className={` ${currentDate ? "" : "cursor-no-drop"} ${slots.length === 0 ? "text-red-500 text-sm font-bold cursor-no-drop" : "btn"}`}>Boock Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default SingleAppointment;
