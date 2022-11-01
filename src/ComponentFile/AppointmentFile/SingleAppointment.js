@@ -1,9 +1,9 @@
 import React from 'react';
 
-const SingleAppointment = ({ service, currentDate }) => {
+const SingleAppointment = ({ service, currentDate, setTritment }) => {
     const { name, slots } = service;
-    
-    console.log(currentDate)
+
+    // console.log(currentDate)
     return (
         <div>
             {/* <select name="" id="">
@@ -18,12 +18,18 @@ const SingleAppointment = ({ service, currentDate }) => {
                         {
                             slots.length ? <span>{slots[0]}</span>
                                 :
-                                <span className='text-red-500'>No time available</span>
+                                <span className='text-red-500'>Try another date</span>
                         }
                     </p>
                     <p className='text-sm'> {slots.length} {`${slots.length > 1 ? "spaces" : "space"}`} available</p>
-                    <div className="card-actions justify-center mb-6">
-                        <button  disabled={slots.length === 0} className={` ${currentDate ? "" : "cursor-no-drop"} ${slots.length === 0 ? "text-red-500 text-sm font-bold cursor-no-drop" : "btn"}`}>Boock Now</button>
+                    <div className="card-actions justify-center">
+
+                        {/* <label htmlFor="my-modal-6" className="btn">open modal</label> <br /> */}
+                        <label htmlFor="my-boolking-modal"
+                            onClick={() => setTritment(service)}
+                            disabled={slots.length === 0 || `${currentDate ? "" : "cursor-no-drop"}`}
+                            className={`${slots.length === 0 ? "text-red-500 text-sm font-bold btn cursor-no-drop" : "btn hover:text-accent"}`}
+                        >Boock Now</label>
                     </div>
                 </div>
             </div>
