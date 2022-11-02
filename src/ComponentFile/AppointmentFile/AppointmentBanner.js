@@ -11,13 +11,13 @@ const AppointmentBanner = ({currentDate, setCurrentDate}) => {
         <div>
             <div className="hero min-h-screen bg-base-200">
                 <div className=" w-full hero-content flex-col lg:flex-row-reverse">
-                    <div class="container w-3/6 lg:ml-5 rounded-lg shadow-2xl">
+                    <div className="container w-3/6 lg:ml-5 rounded-lg shadow-2xl">
 
                         <div className="image-container ">
 
                             <img src="https://images.theconversation.com/files/289016/original/file-20190822-170951-avvckq.jpg?ixlib=rb-1.1.0&rect=0%2C441%2C6016%2C3008&q=45&auto=format&w=1356&h=668&fit=crop" className='h-96' />
 
-                            <div class="content">
+                            <div className="content">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et...</p>
                             </div>
 

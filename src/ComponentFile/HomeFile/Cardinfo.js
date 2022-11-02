@@ -16,7 +16,7 @@ const Cardinfo = ({ cardTitle, description, icone, bgColor, hover }) => {
 
         // </div>
 
-        // <div class="card">
+        // <div className="card">
         //     <span className='text-white z-10'><div>
         //         <img className='' src={icone} alt="" />
         //         <div className="card-body text-left">
@@ -28,7 +28,7 @@ const Cardinfo = ({ cardTitle, description, icone, bgColor, hover }) => {
 
         // </div>
 
-        // <div class="card">
+        // <div className="card">
         //     <span className='text-white z-10'><div className={`card-style card-side shadow-xl border-2 text-white ${bgColor} transition duration-700 `}>
         //         <img className='' src={icone} alt="" />
         //         <div className="card-body text-left">

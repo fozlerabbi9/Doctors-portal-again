@@ -1,9 +1,30 @@
 import { format } from 'date-fns';
 import React from 'react';
 
-const BookingModal = ({ tritment, currentDate }) => {
-    const { name } = tritment;
-    console.log(currentDate)
+const BookingModal = ({ tritment, setTritment, currentDate }) => {
+    const { name, slots } = tritment;
+    const date = currentDate && format(currentDate, 'PP');
+
+    const bookingModal = (e) => {
+        e.preventDefault();
+        const serviceName = e.target.name.value;
+        const date = e.target.date.value;
+        const slot = e.target.slot.value;
+        const email = e.target.email.value;
+        const fullName = e.target.fullName.value;
+        const number = e.target.number.value;
+
+        const fullData = {
+            serviceName: serviceName,
+            date: date,
+            slot: slot,
+            email: email,
+            fullName: fullName,
+            number: number
+        }
+        console.log(fullData);
+        setTritment(null)
+    }
 
     return (
         <div>
@@ -12,26 +33,35 @@ const BookingModal = ({ tritment, currentDate }) => {
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
                     <label htmlFor="my-boolking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 className="font-bold text-lg text-accent">{name}</h3>
+                    <h3 className="font-bold text-lg text-blue-800">Booking For : <span className='text-accent'>{name}</span></h3>
 
 
                     <div className="card-body">
-                        <form action="" className='grid gap-2'>
+                        <form onSubmit={bookingModal} action="" className='grid gap-2'>
 
                             <div className="form-control">
-                                <input type="text" value={name} className="input input-bordered" />
+                                <input name='name' type="text" value={name} readOnly className="input input-bordered" />
                             </div>
                             <div className="form-control">
-                                <input type="text" value={currentDate && format(currentDate, 'PP')} className="input input-bordered" />
+                                <input name='date' type="text" value={date} disabled className="input input-bordered" />
+                                {/* <input type="text" value={currentDate && format(currentDate, 'PP')} className="input input-bordered" /> */}
                             </div>
                             <div className="form-control">
-                                <input type="email" placeholder="email" className="input input-bordered" />
+                                <select name='slot' className="input input-bordered pl-2">
+                                    {
+                                        slots.map(slot => <option value={slot}>{slot}</option>)
+                                    }
+                                </select>
+                                {/* <input type="text" value={slots} className="input input-bordered" /> */}
                             </div>
                             <div className="form-control">
-                                <input type="text" placeholder="Ful Name" className="input input-bordered" />
+                                <input name='email' type="email" placeholder="email" className="input input-bordered" />
                             </div>
                             <div className="form-control">
-                                <input type="text" placeholder="phone Number" className="input input-bordered" />
+                                <input name='fullName' type="text" placeholder="Full Name" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <input name='number' type="text" placeholder="phone Number" className="input input-bordered" />
                             </div>
 
                             <div className="form-control">

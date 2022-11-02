@@ -5,17 +5,17 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 const SingleService = ({ service, setServiceInfo }) => {
     const { serviceName, description, img } = service;
     return (
-        <div class="service-card ">
-            <div class="face front-face">
+        <div className="service-card ">
+            <div className="face front-face">
                 <img src={img} alt="" />
                 <div className="text">
                     <h2 className='text-accent font-semibold '>{serviceName}</h2>
                     <p>{description}</p>
                 </div>
             </div>
-            <div class="face back-face">
-                <div class="black-bar mt-4"></div>
-                <div class="authorize text-uppercase ps-3 pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, repellendus.</div>
+            <div className="face back-face">
+                <div className="black-bar mt-4"></div>
+                <div className="authorize text-uppercase ps-3 pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, repellendus.</div>
                 <div className="absolute bottom-0 left-0">
 
                     <label

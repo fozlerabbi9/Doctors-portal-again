@@ -18,16 +18,16 @@ const Home = () => {
                     <div className="hero-content sm:flex-col-reverse flex-col  md:flex-col lg:flex-row-reverse ">
 
                         {/* <img className=' md:w-2/3 lg:w-1/2' src="https://i.ibb.co/bQvShG5/chair.png" alt="" /> */}
-                        <div class="md:w-2/3 lg:w-1/2 flex justify-center items-center">
+                        <div className="md:w-2/3 lg:w-1/2 flex justify-center items-center">
 
                             <img className='' src="https://i.ibb.co/bQvShG5/chair.png" alt="" />
-                            {/* <div class="p-1 ">
-                                <div class="  group relative block overflow-hidden rounded-md transition-all duration-500">
-                                    <div href="#" class="lightbox transition-all duration-500 group-hover:scale-105 tobii-zoom" title="">
+                            {/* <div className="p-1 ">
+                                <div className="  group relative block overflow-hidden rounded-md transition-all duration-500">
+                                    <div href="#" className="lightbox transition-all duration-500 group-hover:scale-105 tobii-zoom" title="">
                                     </div>
-                                    <div class="absolute -bottom-52 group-hover:bottom-2 right-2 left-2 transition-all duration-500 bg-white dark:bg-slate-900 p-4 rounded shadow dark:shadow-gray-700">
-                                        <div href="#" class="hover:text-primary-600 text-lg transition duration-500 font-medium">Doctors Portal</div>
-                                        <h6 class="text-slate-400">Welcome! (name)</h6>
+                                    <div className="absolute -bottom-52 group-hover:bottom-2 right-2 left-2 transition-all duration-500 bg-white dark:bg-slate-900 p-4 rounded shadow dark:shadow-gray-700">
+                                        <div href="#" className="hover:text-primary-600 text-lg transition duration-500 font-medium">Doctors Portal</div>
+                                        <h6 className="text-slate-400">Welcome! (name)</h6>
                                     </div>
                                 </div>
                             </div> */}

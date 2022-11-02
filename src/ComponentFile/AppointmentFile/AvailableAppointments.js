@@ -8,7 +8,10 @@ import BookingModal from './BookingModal';
 const AvailableAppointments = ({ currentDate }) => {
     const [services, setService] = useState([]);
     const [tritment, setTritment] = useState(null);
-    // console.log(tritment)
+    // console.log(tritment._id)
+    // if (tritment._id) {
+    //     // console.log(tritment._id)
+    // }
     useEffect(() => {
         fetch("fakeData.json")
             .then(res => res.json())
@@ -23,7 +26,7 @@ const AvailableAppointments = ({ currentDate }) => {
                 currentDate ?
                     <p className='text-green-500 text-lg font-bold' >Available Appointments On = <span className='text-blue-800'> {format(currentDate, 'PP')}</span> </p>
                     :
-                    <p className='text-red-500 text-lg font-bold'>Please select a date first</p>
+                    <p className='text-red-500 text-lg font-bold'>Please select a date first...</p>
             }
 
             <div className="grid grid-cols-3 gap-5 px-10 pt-5">
@@ -37,9 +40,11 @@ const AvailableAppointments = ({ currentDate }) => {
                 }
             </div>
             {
-                tritment && <BookingModal 
-                tritment={tritment} 
-                currentDate={currentDate}
+                tritment && <BookingModal
+                    key={tritment._id}
+                    tritment={tritment}
+                    currentDate={currentDate}
+                    setTritment={setTritment}
                 ></BookingModal>
             }
 

@@ -1,9 +1,9 @@
 import React from 'react';
 
 const SingleAppointment = ({ service, currentDate, setTritment }) => {
-    const { name, slots } = service;
+    const { name, slots, _id } = service;
 
-    // console.log(currentDate)
+    // console.log(_id)
     return (
         <div>
             {/* <select name="" id="">
@@ -28,8 +28,8 @@ const SingleAppointment = ({ service, currentDate, setTritment }) => {
                         <label htmlFor="my-boolking-modal"
                             onClick={() => setTritment(service)}
                             disabled={slots.length === 0 || `${currentDate ? "" : "cursor-no-drop"}`}
-                            className={`${slots.length === 0 ? "text-red-500 text-sm font-bold btn cursor-no-drop" : "btn hover:text-accent"}`}
-                        >Boock Now</label>
+                            className={`${slots.length === 0 ? "text-red-500 text-sm font-bold btn cursor-no-drop" : "btn hover:text-accent"} ${currentDate ? "" : "cursor-no-drop"}`}
+                        >Bock Now</label>
                     </div>
                 </div>
             </div>
