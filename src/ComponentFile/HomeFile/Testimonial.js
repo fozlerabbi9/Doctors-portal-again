@@ -162,7 +162,7 @@ const Testimonial = () => {
                     className="mySwiper my-10"
                 >
                     {
-                        testiCard.map(value => <SwiperSlide className=' p-5 pb-10 rounded-lg'>
+                        testiCard.map(value => <SwiperSlide key={value._id} className=' p-5 pb-10 rounded-lg'>
                             <Testimonialcard
                                 value={value}
                             ></Testimonialcard>

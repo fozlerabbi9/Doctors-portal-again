@@ -49,19 +49,19 @@ const BookingModal = ({ tritment, setTritment, currentDate }) => {
                             <div className="form-control">
                                 <select name='slot' className="input input-bordered pl-2">
                                     {
-                                        slots.map(slot => <option value={slot}>{slot}</option>)
+                                        slots.map((slot, index) => <option key={index} value={slot}>{slot}</option>)
                                     }
                                 </select>
                                 {/* <input type="text" value={slots} className="input input-bordered" /> */}
                             </div>
                             <div className="form-control">
-                                <input name='email' type="email" placeholder="email" className="input input-bordered" />
+                                <input name='email' required type="email" placeholder="email" className="input input-bordered" />
                             </div>
                             <div className="form-control">
-                                <input name='fullName' type="text" placeholder="Full Name" className="input input-bordered" />
+                                <input name='fullName' required type="text" placeholder="Full Name" className="input input-bordered" />
                             </div>
                             <div className="form-control">
-                                <input name='number' type="text" placeholder="phone Number" className="input input-bordered" />
+                                <input name='number' required type="text" placeholder="phone Number" className="input input-bordered" />
                             </div>
 
                             <div className="form-control">
