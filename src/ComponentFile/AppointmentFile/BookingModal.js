@@ -25,7 +25,11 @@ const BookingModal = ({ tritment, setTritment, currentDate }) => {
         console.log(fullData);
         setTritment(null)
     }
+    // const colorChange = (e) => {
+    //     e.preventDefault();
+    //     e.target.style = "backgroundColor : red"
 
+    // }
     return (
         <div>
 

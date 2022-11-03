@@ -1,14 +1,5 @@
-/* body{
-	margin:0;
-	color:#6a6f8c;
-	background:#c8c8c8;
-	font:600 16px/18px 'Open Sans',sans-serif;
-} */
+
 .login-card {
-    /* width: 500px; */
-    /* left: 100px; */
-    /* margin: 0 auto; */
-    /* background-color: #1161ee; */
     display: flex;
     justify-content: center;
     background: url(https://thedentistsdorridge.co.uk/wp-content/uploads/2019/11/be_a_denist.jpg) no-repeat center;
@@ -19,10 +10,7 @@
     margin: 10px auto 10px;
     max-width: 525px;
     min-height: 570px;
-    /* display: flex; */
-    /* justify-content: center; */
     position: relative;
-    /* background: url(https://images.unsplash.com/photo-1507208773393-40d9fc670acf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80) no-repeat center; */
     box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
     border-radius: 10px;
     background-color: rgba(0,0,0,0.8);
@@ -33,12 +21,9 @@
     height: 100%;
     position: absolute;
     padding: 20px 30px;
-    /* padding: 90px 70px 50px 70px; */
     background: transparent;
-    /* background: rgba(0, 77, 77, .9); */
     text-align: left;
     border-radius: 10px;
-    /* color: white; */
 }
 
 .login-snip .login,
