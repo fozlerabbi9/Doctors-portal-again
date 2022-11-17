@@ -13,7 +13,8 @@ const AvailableAppointments = ({ currentDate }) => {
     //     // console.log(tritment._id)
     // }
     useEffect(() => {
-        fetch("fakeData.json")
+        fetch("http://localhost:5000/services")
+        // fetch("fakeData.json")
             .then(res => res.json())
             .then(data => setService(data))
     }, [])

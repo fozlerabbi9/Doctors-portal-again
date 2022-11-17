@@ -11,6 +11,7 @@ import NotFound from './ComponentFile/NotFoundFile/NotFound';
 
 // eslint-disable-next-line
 import "swiper/css/bundle";
+import Register from './ComponentFile/LoginFile/Register';
 // import "./styles.css";
 
 function App() {
@@ -25,9 +26,11 @@ function App() {
         <Route path='appointment' element={<Appointment></Appointment>}></Route>
         <Route path="bloge" element={<Bloge></Bloge>}></Route>
         <Route path="login" element={<Login></Login>}></Route>
+        <Route path='register' element={<Register></Register>}></Route>
+
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
-      
+
 
     </div>
   );
