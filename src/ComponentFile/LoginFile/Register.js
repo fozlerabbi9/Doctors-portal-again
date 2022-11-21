@@ -2,8 +2,16 @@ import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css'
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Register = () => {
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
     const [changeStyle, setChangeStyle] = useState(false);
     const [passValue, setPassValue] = useState("");
     const [passCount, setPassCunt] = useState(passValue);
@@ -13,7 +21,7 @@ const Register = () => {
         e.preventDefault();
         const password = e.target.value;
         setPassValue(password)
-        
+
         if (password.length < 6) {
             setChangeStyle(true);
         }
@@ -31,6 +39,8 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         const againPassword = e.target.againPassword.value;
+
+        createUserWithEmailAndPassword(email, password)
 
 
         console.log(name, email, password, againPassword);
