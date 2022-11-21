@@ -209,14 +209,27 @@ a {
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to left, #928DAB, #1F1C2C);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.80)), url(https://i.ibb.co/RSzZGfX/be-a-denist.jpg);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.80)), url(https://i.ibb.co/RSzZGfX/be-a-denist.jpg);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     height: 90.5vh;
     width: 100%;
     background-size: cover;
 }
-
+.main-div .form-div .info-text h2{
+    color: tomato;
+    font-size: 4rem;
+    font-weight: 600;
+}
+.main-div .form-div .info-text p{
+    font-size: 1.5rem;
+    color: white;
+}
+.main-div .form-div .info-text p::first-letter{
+    font-size: 2.5rem;
+    font-style: italic;
+    color: tomato;
+}
 .main-div .form {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 10px 20px;

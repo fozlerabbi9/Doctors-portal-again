@@ -1,8 +1,43 @@
 import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css'
 
 const Register = () => {
+    const [changeStyle, setChangeStyle] = useState(false);
+    const [passValue, setPassValue] = useState("");
+    const [passCount, setPassCunt] = useState(passValue);
+    // console.log(passValue);
+
+    const focusFun = (e) => {
+        e.preventDefault();
+        const password = e.target.value;
+        setPassValue(password)
+        
+        if (password.length < 6) {
+            setChangeStyle(true);
+        }
+        else if (password.length >= 6) {
+            setPassCunt(passCount - 1)
+            setChangeStyle(false)
+        }
+    }
+
+
+
+    const registerFun = (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        const againPassword = e.target.againPassword.value;
+
+
+        console.log(name, email, password, againPassword);
+    }
+
+
+
     return (
         <div className='main-div'>
             <div className="form-div flex justify-between lg:mt-24 lg:mx-10 ">
@@ -12,13 +47,16 @@ const Register = () => {
                 </div>
                 <div className="form lg:w-1/3">
                     {/* <Outlet></Outlet> */}
-                    <form className='' action="">
+                    <form className='' action="" onSubmit={registerFun}>
                         <h2 className='w-full mb-4 bg-white py-1 font-bold text-xl rounded-lg'>Register hera</h2>
                         <input className='input-style w-full mb-6 px-2 py-1' name='name' type="text" placeholder='Full Name' /> <br />
                         <input className='input-style w-full mb-6 px-2 py-1' name='email' type="email" placeholder='Email' /> <br />
-                        <input className='input-style w-full mb-6 px-2 py-1' name='password' type="password" placeholder='password' /> <br />
-                        <input className='input-style w-full mb-6 px-2 py-1' name='AgainPassword' type="password" placeholder='Again password' /> <br />
-                        <input className='login-butto w-full mb-6 px-4 p-1  font-bold text-xl rounded-lg' type="button" value="SUBMIT" />
+                        <input onChange={focusFun} onFocus={focusFun} className='input-style w-full mb-6 px-2 py-1' name='password' type="password" placeholder='password' /> <br />
+                        {
+                            changeStyle && <p className='text-white'>Type menimum {passValue ? `${passCount}` : "6"} carecters</p>
+                        }
+                        <input className='input-style w-full mb-6 px-2 py-1' name='againPassword' type="password" placeholder='Again password' /> <br />
+                        <input className='login-butto w-full mb-6 px-4 p-1  font-bold text-xl rounded-lg' type="submit" value="SUBMIT" />
                     </form>
                     <p className='text-white'>Already have an account? <br /> <span> <Link to="/login">Login</Link> </span> here</p>
                 </div>
