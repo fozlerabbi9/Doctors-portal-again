@@ -5,6 +5,7 @@ import './Login.css'
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import SocialLogin from '../SocialLoginFile/SocialLogin';
+import Loading from '../LoadingFile/Loading';
 
 const Register = () => {
     const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
@@ -12,6 +13,10 @@ const Register = () => {
     const [passValue, setPassValue] = useState("");
     const [passCount, setPassCunt] = useState(passValue);
     // console.log(passValue);
+
+    if(loading){
+        return <Loading></Loading>
+    }
 
     const focusFun = (e) => {
         e.preventDefault();
@@ -39,7 +44,7 @@ const Register = () => {
         createUserWithEmailAndPassword(email, password)
 
 
-        console.log(name, email, password, againPassword);
+        // console.log(name, email, password, againPassword);
     }
 
 
