@@ -4,14 +4,10 @@ import { Link } from 'react-router-dom';
 import './Login.css'
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import SocialLogin from '../SocialLoginFile/SocialLogin';
 
 const Register = () => {
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
     const [changeStyle, setChangeStyle] = useState(false);
     const [passValue, setPassValue] = useState("");
     const [passCount, setPassCunt] = useState(passValue);
@@ -66,8 +62,9 @@ const Register = () => {
                             changeStyle && <p className='text-white'>Type menimum {passValue ? `${passCount}` : "6"} carecters</p>
                         }
                         <input className='input-style w-full mb-6 px-2 py-1' name='againPassword' type="password" placeholder='Again password' /> <br />
-                        <input className='login-butto w-full mb-6 px-4 p-1  font-bold text-xl rounded-lg' type="submit" value="SUBMIT" />
+                        <input className='login-butto w-full mb-1 px-4 p-1  font-bold text-xl rounded-lg' type="submit" value="SUBMIT" />
                     </form>
+                    <SocialLogin></SocialLogin>
                     <p className='text-white'>Already have an account? <br /> <span> <Link to="/login">Login</Link> </span> here</p>
                 </div>
             </div>

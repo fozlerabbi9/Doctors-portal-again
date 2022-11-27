@@ -1,0 +1,24 @@
+.or-style{
+    color: tomato;
+    margin-bottom: 5px;
+    position: relative;
+    font-size: 18px;
+}
+.or-style::before{
+    content: '';
+    background-color: tomato;
+    width: 45%;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    bottom: 40%;
+}
+.or-style::after{
+    content: '';
+    background-color: tomato;
+    width: 45%;
+    height: 2px;
+    position: absolute;
+    right: 0;
+    bottom: 40%;
+}
