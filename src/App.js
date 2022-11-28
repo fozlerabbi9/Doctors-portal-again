@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import About from './ComponentFile/AboutFile/About';
 import Appointment from './ComponentFile/AppointmentFile/Appointment';
@@ -12,18 +12,40 @@ import NotFound from './ComponentFile/NotFoundFile/NotFound';
 // eslint-disable-next-line
 import "swiper/css/bundle";
 import Register from './ComponentFile/LoginFile/Register';
+import RequireAuth from './ComponentFile/RequireAuthFile/RequireAuth';
+import { useState } from 'react';
 // import "./styles.css";
 
 function App() {
+  // const [registerValue, setRegisterValue] = useState(false);
+  // const location = useLocation();
+  // console.log(registerValue);
+  // const pathName = location?.pathname
+  // if (pathName === "/register") {
+  //   setRegisterValue(true)
+  // }
+  
   return (
     <div className="App">
       {/* <Home></Home> */}
+
       <NaveBar></NaveBar>
+      {/* {
+        registerValue ? "" : <NaveBar></NaveBar>
+      } */}
 
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
-        <Route path="about" element={<About></About>}></Route>
-        <Route path='appointment' element={<Appointment></Appointment>}></Route>
+        <Route path="about" element={
+          <RequireAuth>
+            <About></About>
+          </RequireAuth>
+        }></Route>
+        <Route path='appointment' element={
+          <RequireAuth>
+            <Appointment></Appointment>
+          </RequireAuth>
+        }></Route>
         <Route path="bloge" element={<Bloge></Bloge>}></Route>
         <Route path="login" element={<Login></Login>}></Route>
         <Route path='register' element={<Register></Register>}></Route>

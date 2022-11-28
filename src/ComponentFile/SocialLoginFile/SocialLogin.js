@@ -1,12 +1,20 @@
 import React from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../LoadingFile/Loading';
 import './Social.css';
 
 const SocialLogin = () => {
     const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+    const navigate = useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
+    if (guser) {
+        navigate(from, { replace: true })
+    }
+    
     if (gloading) {
         return <div class="flex justify-center items-center">
             <p className='text-white'>Loading...</p>

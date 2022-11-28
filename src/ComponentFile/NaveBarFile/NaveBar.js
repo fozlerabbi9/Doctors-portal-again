@@ -9,7 +9,9 @@ const NaveBar = () => {
     const user = useAuthState(auth);
     const photoUrl = user[0]?.photoURL;
     const userNameFirstLetter = user[0]?.displayName?.slice(0, 1).toUpperCase()
-    console.log(user[0])
+    // console.log(user[0])
+    console.log(photoUrl)
+    // console.log(userNameFirstLetter)
     const logOutFun = () => {
         // signOut(auth);
         signOut(auth)

@@ -4,7 +4,7 @@ import appointment from "../../assets/images/appointment.png";
 import doctor from "../../assets/images/doctor.png";
 
 const Appointment = () => {
-    console.log(appointment)
+    // console.log(appointment)
     return (
         <div>
             <div style={{

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../LoadingFile/Loading';
 import SocialLogin from '../SocialLoginFile/SocialLogin';
@@ -9,7 +9,13 @@ import './Login.css';
 
 const Login = () => {
     const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
+    if (user) {
+        navigate(from, { replace: true })
+    }
     if (loading) {
         return <Loading></Loading>
     }
@@ -71,8 +77,8 @@ const Login = () => {
                     {/* <Outlet></Outlet> */}
                     <form onSubmit={submitFun} className='' action="">
                         <h2 className='w-full mb-4 bg-white py-1 font-bold text-xl rounded-lg'>Login hera</h2>
-                        <input className='input-style w-full mb-6 px-2 py-1' name='email' type="email" placeholder='Email' /> <br />
-                        <input className='input-style w-full mb-6 px-2 py-1' name='password' type="password" placeholder='password' /> <br />
+                        <input className='input-style w-full mb-6 px-2 py-1' required name='email' type="email" placeholder='Email' /> <br />
+                        <input className='input-style w-full mb-6 px-2 py-1' required name='password' type="password" placeholder='password' /> <br />
                         {
                             error && <p className='text-red-500 -mt-2 mb-2'>{error.message}</p>
                         }

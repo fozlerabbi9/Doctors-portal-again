@@ -1,20 +1,29 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css'
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import SocialLogin from '../SocialLoginFile/SocialLogin';
 import Loading from '../LoadingFile/Loading';
+import { signOut } from 'firebase/auth';
 
 const Register = () => {
     const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const [changeStyle, setChangeStyle] = useState(false);
     const [passValue, setPassValue] = useState("");
     const [passCount, setPassCunt] = useState(passValue);
-    // console.log(passValue);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
-    if(loading){
+    if (user) {
+        navigate(from, { replace: true })
+    }
+    // console.log(user);
+
+    if (loading) {
         return <Loading></Loading>
     }
 
@@ -34,14 +43,17 @@ const Register = () => {
 
 
 
-    const registerFun = (e) => {
+    const registerFun = async (e) => {
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
         const againPassword = e.target.againPassword.value;
 
-        createUserWithEmailAndPassword(email, password)
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
+        signOut(auth)
+        navigate("/login")
 
 
         // console.log(name, email, password, againPassword);
@@ -60,13 +72,13 @@ const Register = () => {
                     {/* <Outlet></Outlet> */}
                     <form className='' action="" onSubmit={registerFun}>
                         <h2 className='w-full mb-4 bg-white py-1 font-bold text-xl rounded-lg'>Register hera</h2>
-                        <input className='input-style w-full mb-6 px-2 py-1' name='name' type="text" placeholder='Full Name' /> <br />
-                        <input className='input-style w-full mb-6 px-2 py-1' name='email' type="email" placeholder='Email' /> <br />
-                        <input onChange={focusFun} onFocus={focusFun} className='input-style w-full mb-6 px-2 py-1' name='password' type="password" placeholder='password' /> <br />
+                        <input className='input-style w-full mb-6 px-2 py-1' required name='name' type="text" placeholder='Full Name' /> <br />
+                        <input className='input-style w-full mb-6 px-2 py-1' required name='email' type="email" placeholder='Email' /> <br />
+                        <input onChange={focusFun} onFocus={focusFun} className='input-style w-full mb-6 px-2 py-1' required name='password' type="password" placeholder='password' /> <br />
                         {
                             changeStyle && <p className='text-white'>Type menimum {passValue ? `${passCount}` : "6"} carecters</p>
                         }
-                        <input className='input-style w-full mb-6 px-2 py-1' name='againPassword' type="password" placeholder='Again password' /> <br />
+                        <input className='input-style w-full mb-6 px-2 py-1' required name='againPassword' type="password" placeholder='Again password' /> <br />
                         <input className='login-butto w-full mb-1 px-4 p-1  font-bold text-xl rounded-lg' type="submit" value="SUBMIT" />
                     </form>
                     <SocialLogin></SocialLogin>
