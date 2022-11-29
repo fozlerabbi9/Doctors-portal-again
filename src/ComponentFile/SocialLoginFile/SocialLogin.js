@@ -1,8 +1,9 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
-import Loading from '../LoadingFile/Loading';
+// import Loading from '../LoadingFile/Loading';
 import './Social.css';
 
 const SocialLogin = () => {
@@ -11,14 +12,16 @@ const SocialLogin = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
-    if (guser) {
-        navigate(from, { replace: true })
-    }
-    
+    useEffect(() => {
+        if (guser) {
+            navigate(from, { replace: true })
+        }
+    }, [guser, from, navigate]);
+
     if (gloading) {
-        return <div class="flex justify-center items-center">
+        return <div className="flex justify-center items-center">
             <p className='text-white'>Loading...</p>
-            <div class="w-4 h-4 border-l-2 ml-2 border-white rounded-full animate-spin"></div>
+            <div className="w-4 h-4 border-l-2 ml-2 border-white rounded-full animate-spin"></div>
         </div>
 
     }

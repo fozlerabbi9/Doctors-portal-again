@@ -8,6 +8,8 @@ import Login from './ComponentFile/LoginFile/Login';
 import NaveBar from './ComponentFile/NaveBarFile/NaveBar';
 import NotFound from './ComponentFile/NotFoundFile/NotFound';
 // import 'mdb-react-ui-kit/dist/css/mdb.min.css'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // eslint-disable-next-line
 import "swiper/css/bundle";
@@ -24,7 +26,7 @@ function App() {
   // if (pathName === "/register") {
   //   setRegisterValue(true)
   // }
-  
+
   return (
     <div className="App">
       {/* <Home></Home> */}
@@ -52,6 +54,8 @@ function App() {
 
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
+
+      <ToastContainer />
 
 
     </div>

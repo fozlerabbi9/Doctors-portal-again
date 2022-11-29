@@ -1,9 +1,16 @@
 import { format } from 'date-fns';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const BookingModal = ({ tritment, setTritment, currentDate }) => {
     const { name, slots } = tritment;
     const date = currentDate && format(currentDate, 'PP');
+    const user = useAuthState(auth);
+    const displayName = user[0].displayName;
+    const userEmail = user[0].email;
+    // console.log(user[0].displayName)
+    // console.log(user[0].email)
 
     const bookingModal = (e) => {
         e.preventDefault();
@@ -59,10 +66,10 @@ const BookingModal = ({ tritment, setTritment, currentDate }) => {
                                 {/* <input type="text" value={slots} className="input input-bordered" /> */}
                             </div>
                             <div className="form-control">
-                                <input name='email' required type="email" placeholder="email" className="input input-bordered" />
+                                <input name='email' readOnly type="email" value={userEmail || ""} placeholder="email" className="input input-bordered" />
                             </div>
                             <div className="form-control">
-                                <input name='fullName' required type="text" placeholder="Full Name" className="input input-bordered" />
+                                <input name='fullName' readOnly type="text" value={displayName ||  ""} placeholder="Full Name" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <input name='number' required type="text" placeholder="phone Number" className="input input-bordered" />

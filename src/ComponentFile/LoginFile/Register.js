@@ -2,25 +2,31 @@ import React from 'react';
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css'
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import SocialLogin from '../SocialLoginFile/SocialLogin';
 import Loading from '../LoadingFile/Loading';
 import { signOut } from 'firebase/auth';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 const Register = () => {
-    const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword, user, loading, creatUererror,] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [sendEmailVerification, verifysending, error] = useSendEmailVerification(auth);
     const [changeStyle, setChangeStyle] = useState(false);
     const [passValue, setPassValue] = useState("");
     const [passCount, setPassCunt] = useState(passValue);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
+    // console.log(user)
+    useEffect(() => {
+        if (user) {
+            navigate(from, { replace: true })
+        }
+    }, [user, from, navigate])
 
-    if (user) {
-        navigate(from, { replace: true })
-    }
     // console.log(user);
 
     if (loading) {
@@ -52,13 +58,14 @@ const Register = () => {
 
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
+        await sendEmailVerification()
+        toast("You can login right now")
         signOut(auth)
         navigate("/login")
 
 
         // console.log(name, email, password, againPassword);
     }
-
 
 
     return (

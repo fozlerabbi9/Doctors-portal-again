@@ -1,7 +1,9 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../LoadingFile/Loading';
 import SocialLogin from '../SocialLoginFile/SocialLogin';
@@ -9,13 +11,20 @@ import './Login.css';
 
 const Login = () => {
     const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, passSending, passerror] = useSendPasswordResetEmail(auth);
+    const [storeEmail, setStoreEmail] = useState();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
-    if (user) {
-        navigate(from, { replace: true })
-    }
+    console.log(storeEmail);
+
+   
+    useEffect(() => {
+        if (user) {
+            navigate(from, { replace: true })
+        }
+    }, [user, from, navigate])
     if (loading) {
         return <Loading></Loading>
     }
@@ -23,10 +32,26 @@ const Login = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
+        setStoreEmail(email);
         signInWithEmailAndPassword(email, password)
-        console.log(email);
-        console.log(password);
+        // console.log(email);
+        // console.log(password);
     }
+    const getEmailFun = (e) =>{
+        e.preventDefault();
+        const email  =  e.target.value;
+        setStoreEmail(email);
+    }
+    
+    const forgetPassFun = async () => {
+        const success =  await sendPasswordResetEmail(storeEmail)
+        if(success){
+            // alert("please chack your email");
+            toast("please chack your email")
+        }
+
+    }
+
 
     // const [pass, setPass] = useState(false)
     // console.log(pass)
@@ -77,10 +102,11 @@ const Login = () => {
                     {/* <Outlet></Outlet> */}
                     <form onSubmit={submitFun} className='' action="">
                         <h2 className='w-full mb-4 bg-white py-1 font-bold text-xl rounded-lg'>Login hera</h2>
-                        <input className='input-style w-full mb-6 px-2 py-1' required name='email' type="email" placeholder='Email' /> <br />
-                        <input className='input-style w-full mb-6 px-2 py-1' required name='password' type="password" placeholder='password' /> <br />
+                        <input onChange={getEmailFun} className='input-style w-full mb-6 px-2 py-1' required name='email' type="email" placeholder='Email' /> <br />
+                        <input className='input-style w-full mb-2 px-2 py-1' required name='password' type="password" placeholder='password' /> <br />
+                        <p className='text-green-500 mb-3 text-sm cursor-pointer w-1/3' onClick={forgetPassFun} >forget Password</p>
                         {
-                            error && <p className='text-red-500 -mt-2 mb-2'>{error.message}</p>
+                            error && <p className='text-red-500 -mt-3 mb-2'>{error.message}</p>
                         }
                         <input className='login-butto w-full mb-1 px-4 p-1  font-bold text-xl rounded-lg' type="submit" value="SUBMIT" />
                     </form>
