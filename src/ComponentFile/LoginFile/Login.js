@@ -17,9 +17,9 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
-    console.log(storeEmail);
+    // console.log(storeEmail);
 
-   
+
     useEffect(() => {
         if (user) {
             navigate(from, { replace: true })
@@ -37,16 +37,18 @@ const Login = () => {
         // console.log(email);
         // console.log(password);
     }
-    const getEmailFun = (e) =>{
+    const getEmailFun = (e) => {
         e.preventDefault();
-        const email  =  e.target.value;
+        const email = e.target.value;
         setStoreEmail(email);
     }
-    
+
     const forgetPassFun = async () => {
-        const success =  await sendPasswordResetEmail(storeEmail)
-        if(success){
-            // alert("please chack your email");
+        if (storeEmail === undefined) {
+            toast("please type your valid email address")
+        }
+        const success = await sendPasswordResetEmail(storeEmail)
+        if (success) {
             toast("please chack your email")
         }
 

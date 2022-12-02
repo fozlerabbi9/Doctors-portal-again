@@ -19,7 +19,7 @@ const Testimonialcard = ({ value }) => {
         <div>
             <div className="testimonial-style flex justify-center items-center ">
                 <div className="testimonial bg-accent p-2  rounded">
-                    <img className='logo-style mx-auto' src={value.logo} alt=''  />
+                    <img className='logo-style w-1/3 mx-auto' src={value.logo} alt=''  />
                     <p>{value.description}</p>
                     <img  className=" mx-auto rounded-full w-1/4" src={value.img} alt='' />
                     <h5>name : {value.name}</h5>

@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const BookingModal = ({ tritment, setTritment, currentDate }) => {
@@ -19,6 +20,7 @@ const BookingModal = ({ tritment, setTritment, currentDate }) => {
         const slot = e.target.slot.value;
         const email = e.target.email.value;
         const fullName = e.target.fullName.value;
+        const patientName = e.target.patientName.value;
         const number = e.target.number.value;
 
         const fullData = {
@@ -26,10 +28,24 @@ const BookingModal = ({ tritment, setTritment, currentDate }) => {
             date: date,
             slot: slot,
             email: email,
-            fullName: fullName,
+            emailIdHolder: fullName,
+            patientName: patientName,
             number: number
         }
-        console.log(fullData);
+        // console.log(fullData);
+        fetch("http://localhost:5000/booking", {
+            method: 'POST',
+            body: JSON.stringify(fullData),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+
+        toast("successfully Booked")
         setTritment(null)
     }
     // const colorChange = (e) => {
@@ -69,10 +85,13 @@ const BookingModal = ({ tritment, setTritment, currentDate }) => {
                                 <input name='email' readOnly type="email" value={userEmail || ""} placeholder="email" className="input input-bordered" />
                             </div>
                             <div className="form-control">
-                                <input name='fullName' readOnly type="text" value={displayName ||  ""} placeholder="Full Name" className="input input-bordered" />
+                                <input name='fullName' readOnly type="text" value={displayName || ""} placeholder="Full Name" className="input input-bordered" />
                             </div>
                             <div className="form-control">
-                                <input name='number' required type="text" placeholder="phone Number" className="input input-bordered" />
+                                <input name='patientName' type="text" placeholder="Patient Name" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <input name='number' required type="number" placeholder="phone Number" className="input input-bordered" />
                             </div>
 
                             <div className="form-control">

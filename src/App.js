@@ -16,6 +16,7 @@ import "swiper/css/bundle";
 import Register from './ComponentFile/LoginFile/Register';
 import RequireAuth from './ComponentFile/RequireAuthFile/RequireAuth';
 import { useState } from 'react';
+import MyAppointment from './ComponentFile/MyAppointmentFile/MyAppointment';
 // import "./styles.css";
 
 function App() {
@@ -48,6 +49,11 @@ function App() {
             <Appointment></Appointment>
           </RequireAuth>
         }></Route>
+        <Route path='myAppointment' element={
+          <RequireAuth>
+            <MyAppointment></MyAppointment>
+          </RequireAuth>
+        } ></Route>
         <Route path="bloge" element={<Bloge></Bloge>}></Route>
         <Route path="login" element={<Login></Login>}></Route>
         <Route path='register' element={<Register></Register>}></Route>
