@@ -43,9 +43,14 @@ const BookingModal = ({ tritment, setTritment, currentDate }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                if(data.success){
+                    toast("successfully Booked")
+                }
+                else{
+                    toast(`already booked at ${data?.booking?.date} time ${data?.booking?.slot}`)
+                }
             })
 
-        toast("successfully Booked")
         setTritment(null)
     }
     // const colorChange = (e) => {

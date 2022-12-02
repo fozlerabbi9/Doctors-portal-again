@@ -30,7 +30,7 @@ const MyAppointment = () => {
                 {
                     myAppointments.map((myAppointment, index) =>
                         <li key={index}> PatientName : {myAppointment.patientName}, Email : {myAppointment.email} </li>
-                    )
+                    ).reverse()
                 }
             </ul>
         </div>
