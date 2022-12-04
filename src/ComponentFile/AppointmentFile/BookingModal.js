@@ -47,7 +47,7 @@ const BookingModal = ({ tritment, setTritment, currentDate }) => {
                     toast("successfully Booked")
                 }
                 else{
-                    toast(`already booked at ${data?.booking?.date} time ${data?.booking?.slot}`)
+                    toast.error(`already booked at ${data?.booking?.date} time ${data?.booking?.slot}`)
                 }
             })
 
