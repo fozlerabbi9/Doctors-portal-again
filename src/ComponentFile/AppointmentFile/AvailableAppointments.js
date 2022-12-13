@@ -4,21 +4,34 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import SingleAppointment from './SingleAppointment';
 import BookingModal from './BookingModal';
+import { useQuery } from 'react-query';
+import Loading from '../LoadingFile/Loading';
 
 const AvailableAppointments = ({ currentDate }) => {
-    const [services, setService] = useState([]);
+    // const [services, setService] = useState([]);
     const [tritment, setTritment] = useState(null);
     // console.log(tritment._id)
     // if (tritment._id) {
     //     // console.log(tritment._id)
     // }
-    useEffect(() => {
-        fetch("http://localhost:5000/services")
-        // fetch("fakeData.json")
-            .then(res => res.json())
-            .then(data => setService(data))
-    }, [])
+    const formatetDate = currentDate && format(currentDate, 'PP')
+    // console.log(formatetDate)
+    const { data, isLoading , refetch} = useQuery(['availabel', formatetDate], () =>
+        fetch(`http://localhost:5000/available?date=${formatetDate}`)
+            .then(res => res.json()))
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+    // useEffect(() => {
+    // fetch("http://localhost:5000/services")
+    // fetch("fakeData.json")
+    //     fetch(`http://localhost:5000/available?date=${formatetDate}`)
+    //         .then(res => res.json())
+    //         .then(data => setService(data))
+    // }, [formatetDate])
     // console.log(services);
+
     return (
         <div className='py-5'>
             {/* <p>{format(currentDate, 'PP')}</p> */}
@@ -32,7 +45,7 @@ const AvailableAppointments = ({ currentDate }) => {
 
             <div className="grid grid-cols-3 gap-5 px-10 pt-5">
                 {
-                    services.map(service => <SingleAppointment
+                    data?.map(service => <SingleAppointment
                         key={service._id}
                         service={service}
                         currentDate={currentDate}
@@ -46,6 +59,7 @@ const AvailableAppointments = ({ currentDate }) => {
                     tritment={tritment}
                     currentDate={currentDate}
                     setTritment={setTritment}
+                    refetch={refetch}
                 ></BookingModal>
             }
 

@@ -25,11 +25,11 @@ const MyAppointment = () => {
 
     return (
         <div>
-            this is my appointment page {myAppointments.length}
+            All Appointments is =  {myAppointments.length}
             <ul>
                 {
                     myAppointments.map((myAppointment, index) =>
-                        <li key={index}> PatientName : {myAppointment.patientName}, Email : {myAppointment.email} </li>
+                        <li key={index}> PatientName : {myAppointment.patientName}, Email : {myAppointment.email}, date : {myAppointment.date} </li>
                     ).reverse()
                 }
             </ul>

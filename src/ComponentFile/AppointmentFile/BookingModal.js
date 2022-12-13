@@ -4,7 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
-const BookingModal = ({ tritment, setTritment, currentDate }) => {
+const BookingModal = ({ tritment, setTritment, currentDate, refetch }) => {
     const { name, slots } = tritment;
     const date = currentDate && format(currentDate, 'PP');
     const user = useAuthState(auth);
@@ -26,7 +26,7 @@ const BookingModal = ({ tritment, setTritment, currentDate }) => {
         const fullData = {
             serviceName: serviceName,
             date: date,
-            slot: slot,
+            slots: slot,
             email: email,
             emailIdHolder: fullName,
             patientName: patientName,
@@ -42,16 +42,16 @@ const BookingModal = ({ tritment, setTritment, currentDate }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                if(data.success){
+                // console.log(data)
+                if (data.success) {
                     toast("successfully Booked")
                 }
-                else{
+                else {
                     toast.error(`already booked at ${data?.booking?.date} time ${data?.booking?.slot}`)
                 }
+                refetch();
+                setTritment(null)
             })
-
-        setTritment(null)
     }
     // const colorChange = (e) => {
     //     e.preventDefault();

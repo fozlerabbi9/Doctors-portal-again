@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SingleAppointment = ({ service, currentDate, setTritment }) => {
-    const { name, slots, _id } = service;
+    const { name, slots, available, _id } = service;
 
     // console.log(_id)
     return (
