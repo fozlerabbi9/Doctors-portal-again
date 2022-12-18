@@ -21,6 +21,7 @@ const BookingModal = ({ tritment, setTritment, currentDate, refetch }) => {
         const email = e.target.email.value;
         const fullName = e.target.fullName.value;
         const patientName = e.target.patientName.value;
+        const liveingPlace = e.target.liveingPlace.value;
         const number = e.target.number.value;
 
         const fullData = {
@@ -30,6 +31,7 @@ const BookingModal = ({ tritment, setTritment, currentDate, refetch }) => {
             email: email,
             emailIdHolder: fullName,
             patientName: patientName,
+            liveingPlace: liveingPlace,
             number: number
         }
         // console.log(fullData);
@@ -94,6 +96,9 @@ const BookingModal = ({ tritment, setTritment, currentDate, refetch }) => {
                             </div>
                             <div className="form-control">
                                 <input name='patientName' type="text" placeholder="Patient Name" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <input name='liveingPlace' required type="text" placeholder="Home Town / Village" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <input name='number' required type="number" placeholder="phone Number" className="input input-bordered" />

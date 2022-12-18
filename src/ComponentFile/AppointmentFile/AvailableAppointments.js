@@ -6,8 +6,12 @@ import SingleAppointment from './SingleAppointment';
 import BookingModal from './BookingModal';
 import { useQuery } from 'react-query';
 import Loading from '../LoadingFile/Loading';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const AvailableAppointments = ({ currentDate }) => {
+    const user = useAuthState(auth);
+    const email = user[0].email;
     // const [services, setService] = useState([]);
     const [tritment, setTritment] = useState(null);
     // console.log(tritment._id)
@@ -16,8 +20,9 @@ const AvailableAppointments = ({ currentDate }) => {
     // }
     const formatetDate = currentDate && format(currentDate, 'PP')
     // console.log(formatetDate)
-    const { data, isLoading , refetch} = useQuery(['availabel', formatetDate], () =>
-        fetch(`http://localhost:5000/available?date=${formatetDate}`)
+    const { data, isLoading, refetch } = useQuery(['availabel', formatetDate], () =>
+        // fetch(`http://localhost:5000/available?date=${formatetDate}`)
+        fetch(`http://localhost:5000/available?date=${formatetDate}`)  // এই date টি server site এ query হিসেবে যাবে,,,
             .then(res => res.json()))
 
     if (isLoading) {

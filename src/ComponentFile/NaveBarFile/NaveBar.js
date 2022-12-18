@@ -22,7 +22,7 @@ const NaveBar = () => {
         <li> <Link className='navLink-style' to={"/"}>Home</Link> </li>
         <li> <Link className='navLink-style' to={"about"}>About</Link> </li>
         <li> <Link className='navLink-style' to={"appointment"} >Appointment</Link> </li>
-        <li> <Link className='navLink-style' to={"myAppointment"} >MyAppointment</Link> </li>
+        <li> <Link className='navLink-style' to={"dashboard"} >Dashboard</Link> </li>
         <li> <Link className='navLink-style' to={"bloge"}>Bloge</Link> </li>
         {
             user[0] ? <li> <Link onClick={logOutFun} className='navLink-style'> <p className='text-red-600 font-semibold '>Log-Out</p> </Link> </li> :
@@ -36,7 +36,9 @@ const NaveBar = () => {
     return (
         <div>
             <div className="navbar bg-neutral px-10">
-                <div className="navbar-start w-5/12">
+
+                <div className="navbar-start">
+                    {/* <div className="navbar-start w-5/12"> */}
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -45,16 +47,26 @@ const NaveBar = () => {
                             {navLink}
                         </ul>
                     </div>
-                    <div className='navbar-center'>
-                        <li className='list-none'> <Link className='' to={"/"}> <h2 className='title-style' data-text="DoctorsPortal">DoctorsPortal</h2></Link> </li>
+                    <div className=''>
+                        {/* <div className='navbar-center'> */}
+                        <li className='list-none '> <Link className='' to={"/"}> <h2 className='title-style' data-text="DoctorsPortal">DoctorsPortal</h2></Link> </li>
                         {/* <li className='list-none'> <Link className='title-style' to={"/"}>Doctors Portal</Link> </li> */}
                     </div>
+
                 </div>
-                <div className="navbar-end w-8/12 hidden lg:flex">
+
+                <div className="navbar-canter w-8/12 hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
                         {navLink}
                     </ul>
                 </div>
+                <div className="navbar-end lg:hidden">
+                    {/* <label tabIndex={1} htmlFor="my-drawer-2" className="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    </label> */}
+                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open Menue</label>
+                </div>
+
             </div>
         </div>
     );

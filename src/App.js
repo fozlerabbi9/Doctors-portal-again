@@ -17,6 +17,9 @@ import Register from './ComponentFile/LoginFile/Register';
 import RequireAuth from './ComponentFile/RequireAuthFile/RequireAuth';
 import { useState } from 'react';
 import MyAppointment from './ComponentFile/MyAppointmentFile/MyAppointment';
+import DashBoard from './ComponentFile/DashboardFile/DashBoard';
+import Reviews from './ComponentFile/ReviewsFile/Reviews';
+import MyHistore from './ComponentFile/MyhistoryFile/MyHistore';
 // import "./styles.css";
 
 function App() {
@@ -49,11 +52,19 @@ function App() {
             <Appointment></Appointment>
           </RequireAuth>
         }></Route>
-        <Route path='myAppointment' element={
+        
+        <Route path='dashboard' element={
           <RequireAuth>
-            <MyAppointment></MyAppointment>
+            <DashBoard>
+            </DashBoard>
           </RequireAuth>
-        } ></Route>
+        } >
+          {/* <Route index  element={<MyAppointment></MyAppointment>}></Route> */}
+          <Route index path='/dashboard' element={<MyAppointment></MyAppointment>}></Route>
+          <Route path='reviews' element={<Reviews></Reviews>}></Route>
+          <Route path='myHistory' element={<MyHistore></MyHistore>}></Route>
+        </Route>
+
         <Route path="bloge" element={<Bloge></Bloge>}></Route>
         <Route path="login" element={<Login></Login>}></Route>
         <Route path='register' element={<Register></Register>}></Route>
