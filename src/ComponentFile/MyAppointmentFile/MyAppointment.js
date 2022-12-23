@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const MyAppointment = () => {
     const [myAppointments, setMyAppointment] = useState([]);
     const user = useAuthState(auth);
     const email = user[0].email;
-    console.log(user);
+    // console.log(user);
 
     useEffect(() => {
         // fetch(`http://localhost:5000/booking?email=${email}`, {
@@ -23,7 +24,25 @@ const MyAppointment = () => {
                     setMyAppointment(data)
                 })
         }
-    }, [email])
+    }, [email]);
+
+    const deleteFun = id => {
+        console.log(id)
+        const procied = window.confirm("Are You Sure To Delete This?");
+        // const procied = toast.confirm("r u sure") ======== kaj horse na
+        if (procied) {
+            const url = `http://localhost:5000/booking/${id}`
+            fetch(url, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    const newData = myAppointments.filter(data => data._id !== id);
+                    setMyAppointment(newData);
+                })
+        }
+    }
 
     return (
         <div className='w-full'>
@@ -55,7 +74,7 @@ const MyAppointment = () => {
                                         <td>{myAppointment.slots}</td>
                                         <td>{myAppointment.date}</td>
                                         <td className='text-green-700 cursor-alias'>edit</td>
-                                        <td className=' text-red-700 cursor-pointer'>delete</td>
+                                        <td className=' text-red-700 cursor-pointer' onClick={() => deleteFun(myAppointment._id)}>delete</td>
                                     </tr>
                                 )
                                 // ).reverse()

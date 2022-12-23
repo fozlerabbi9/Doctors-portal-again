@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../HookFile/useToken';
 // import Loading from '../LoadingFile/Loading';
 import './Social.css';
 
@@ -11,12 +12,14 @@ const SocialLogin = () => {
     const navigate = useNavigate()
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
+    const [token] = useToken(guser)
 
     useEffect(() => {
-        if (guser) {
+        // if (guser) {
+        if (token) {
             navigate(from, { replace: true })
         }
-    }, [guser, from, navigate]);
+    }, [token, from, navigate]);
 
     if (gloading) {
         return <div className="flex justify-center items-center">

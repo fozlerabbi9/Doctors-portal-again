@@ -9,6 +9,7 @@ import Loading from '../LoadingFile/Loading';
 import { signOut } from 'firebase/auth';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
+import useToken from '../HookFile/useToken';
 
 const Register = () => {
     const [createUserWithEmailAndPassword, user, loading, creatUererror,] = useCreateUserWithEmailAndPassword(auth);
@@ -20,12 +21,21 @@ const Register = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
+    const [token] = useToken(user);
+
     // console.log(user)
-    useEffect(() => {
-        if (user) {
-            navigate(from, { replace: true })
-        }
-    }, [user, from, navigate])
+    // useEffect(() => {
+    //     if (token) {
+    //         navigate(from, { replace: true })
+    //         // navigate("/");
+    //     }
+    // }, [token, from, navigate])
+    console.log(token)
+
+    if (token) {
+        // navigate(from, { replace: true })
+        navigate("/login");
+    }
 
     // console.log(user);
 
@@ -61,7 +71,7 @@ const Register = () => {
         await sendEmailVerification()
         toast("You can login right now")
         signOut(auth)
-        navigate("/login")
+        // navigate("/login")
 
 
         // console.log(name, email, password, againPassword);
