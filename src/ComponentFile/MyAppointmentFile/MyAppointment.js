@@ -1,6 +1,8 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
@@ -8,6 +10,7 @@ const MyAppointment = () => {
     const [myAppointments, setMyAppointment] = useState([]);
     const user = useAuthState(auth);
     const email = user[0].email;
+    const navigate = useNavigate();
     // console.log(user);
 
     useEffect(() => {
@@ -18,8 +21,22 @@ const MyAppointment = () => {
         //     },
         // })
         if (email) {
-            fetch(`http://localhost:5000/booking?email=${email}`)  // এই email টি server site এ query হিসেবে যাবে,,,
-                .then(res => res.json())
+            fetch(`http://localhost:5000/booking?email=${email}`, {
+                method: 'GET',
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem("accessToken")}`
+                }
+            })  // এই email টি server site এ query হিসেবে যাবে,,,
+                .then(res => {
+                    console.log("res======", res)
+                    if (res.status === 401 || res.status === 403) {
+                        navigate("/");
+                        signOut(auth);
+                        localStorage.removeItem("accessToken")
+                        toast(`${res.status.message}`)
+                    }
+                    return res.json()
+                })
                 .then(data => {
                     setMyAppointment(data)
                 })

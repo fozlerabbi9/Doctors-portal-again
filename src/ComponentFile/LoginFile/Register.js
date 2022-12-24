@@ -30,7 +30,7 @@ const Register = () => {
     //         // navigate("/");
     //     }
     // }, [token, from, navigate])
-    console.log(token)
+    // console.log(token)
 
     if (token) {
         // navigate(from, { replace: true })

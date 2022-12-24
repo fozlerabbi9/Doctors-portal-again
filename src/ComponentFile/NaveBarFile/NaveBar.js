@@ -17,6 +17,7 @@ const NaveBar = () => {
     const logOutFun = () => {
         // signOut(auth);
         signOut(auth)
+        localStorage.removeItem("accessToken")
     }
     const navLink = <>
         <li> <Link className='navLink-style' to={"/"}>Home</Link> </li>

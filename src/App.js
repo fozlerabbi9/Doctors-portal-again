@@ -20,6 +20,7 @@ import MyAppointment from './ComponentFile/MyAppointmentFile/MyAppointment';
 import DashBoard from './ComponentFile/DashboardFile/DashBoard';
 import Reviews from './ComponentFile/ReviewsFile/Reviews';
 import MyHistore from './ComponentFile/MyhistoryFile/MyHistore';
+import AllUsers from './ComponentFile/AllUsersFile/AllUsers';
 // import "./styles.css";
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
           <Route index path='/dashboard' element={<MyAppointment></MyAppointment>}></Route>
           <Route path='reviews' element={<Reviews></Reviews>}></Route>
           <Route path='myHistory' element={<MyHistore></MyHistore>}></Route>
+          <Route path='allUsers' element={<AllUsers></AllUsers>}></Route>
         </Route>
 
         <Route path="bloge" element={<Bloge></Bloge>}></Route>
