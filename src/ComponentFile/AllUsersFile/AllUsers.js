@@ -46,7 +46,7 @@ const AllUsers = () => {
 
     return (
         <div className='w-full'>
-            alll users ===== {datas?.length}
+            alll users ===----- {datas?.length}
 
             <div className="overflow-x-auto">
                 <table className="table w-full">
