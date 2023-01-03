@@ -28,7 +28,7 @@ const MyAppointment = () => {
                 }
             })  // এই email টি server site এ query হিসেবে যাবে,,,
                 .then(res => {
-                    console.log("res======", res)
+                    // console.log("res======", res)
                     if (res.status === 401 || res.status === 403) {
                         navigate("/");
                         signOut(auth);
@@ -41,7 +41,7 @@ const MyAppointment = () => {
                     setMyAppointment(data)
                 })
         }
-    }, [email]);
+    }, [email, navigate]);
 
     const deleteFun = id => {
         console.log(id)
@@ -54,9 +54,9 @@ const MyAppointment = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     const newData = myAppointments.filter(data => data._id !== id);
                     setMyAppointment(newData);
+                    // console.log(data)
                 })
         }
     }
