@@ -21,6 +21,7 @@ const useToken = user => {
                 .then(data => {
                     console.log(data)
                     const accessToken = data.accessToken;
+                    console.log(accessToken)
                     localStorage.setItem('accessToken', accessToken)
                     setToken(accessToken);
 
